@@ -320,14 +320,26 @@ binary is stored in Git history or Releases. A containerised run writes its own
 copies to `artifacts/docker-results/` (gitignored) rather than over the
 committed ones; `make docker-results` diffs the two.
 
-**How exactly these reproduce.** Re-running in the Linux container reproduced
-`baseline-linear-v1` to four decimal places on every metric (0.9109 macro-F1,
-0.0291 ECE — scikit-learn's logistic regression is deterministic here).
-`baseline-gbdt-v1` did **not**: 0.7910 on Windows against 0.7951 in the
-container, because XGBoost's `hist` tree method with `n_jobs=-1` varies with
-platform and thread count. So "reproducible" means the scripts regenerate every
-figure from scratch, not that the last decimal is stable across machines. The
-transformer carries the usual additional float non-determinism on top of that.
+**How exactly these reproduce.** The whole pipeline was rerun from an empty
+volume via `docker compose up` — Debian, Python 3.9-slim, a different BLAS —
+and compared against the numbers above, which came from Windows. Intent
+macro-F1 on the test split:
+
+| Model | Windows (committed) | Linux container | Delta |
+| --- | ---: | ---: | ---: |
+| `baseline-linear-v1` | 0.9109 | 0.9109 | **0.0000** |
+| `transformer-distilbert-v1` | 0.9301 | 0.9298 | −0.0003 |
+| `baseline-gbdt-v1` | 0.7910 | 0.7951 | +0.0041 |
+
+The fine-tune tracked the Windows run's validation curve almost exactly
+(identical train loss to four decimals at every epoch, best epoch 8 both
+times), so the transformer is *not* the unstable one — **XGBoost is**, because
+`hist` with `n_jobs=-1` varies with platform and thread count. Every conclusion
+survived: McNemar still significant (p = 3.3 × 10⁻⁵), the per-class split still
+50 / 16 / 11, and all three tuned thresholds identical.
+
+So "reproducible" means the scripts rebuild every figure from scratch and the
+findings hold, not that the fourth decimal is stable on every machine.
 
 ```bash
 make test    # 189 tests, no trained models required
