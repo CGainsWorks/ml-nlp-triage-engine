@@ -16,13 +16,25 @@ services:
       dockerfile: docker/Dockerfile
     image: ml-nlp-triage-engine:latest
     command: ["bash", "scripts/train_all.sh"]
+    # The image's HEALTHCHECK probes the HTTP port, which this one-shot job
+    # never opens. Without this it sits marked "unhealthy" for its whole life.
+    healthcheck:
+      disable: true
     environment:
       TRIAGE_EPOCHS: "${TRIAGE_EPOCHS:-8}"
       TRIAGE_LR: "${TRIAGE_LR:-5e-5}"
       TRIAGE_SKIP_IF_TRAINED: "${TRIAGE_SKIP_IF_TRAINED:-1}"
     volumes:
       - artifacts:/app/artifacts
-      - ./experiments/results:/app/experiments/results
+      # Reports land in a gitignored host directory, NOT in experiments/results/.
+      # An earlier version of this file mounted the committed results directory
+      # read-write, and a single `TRIAGE_EPOCHS=1 docker compose up` silently
+      # overwrote all seven reference files with under-trained figures — which
+      # could then have been committed without anyone noticing. You still get
+      # the container's reports on the host; they just cannot clobber the
+      # numbers the README quotes. Diff them against experiments/results/ if
+      # you want to compare.
+      - ./artifacts/docker-results:/app/experiments/results
 
   api:
     build:

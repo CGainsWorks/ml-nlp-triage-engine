@@ -72,6 +72,15 @@ docker-up:
 docker-down:
 	docker compose down -v
 
+# Show how a containerised run's reports differ from the committed reference
+# numbers. The container writes to artifacts/docker-results/ (gitignored), never
+# over experiments/results/, so this comparison is always safe to run.
+docker-results:
+	@test -d artifacts/docker-results || \
+	    { echo "No container reports yet. Run: docker compose up"; exit 1; }
+	@diff -ru experiments/results artifacts/docker-results \
+	    && echo "Container output matches the committed reference numbers."
+
 clean:
 	rm -rf artifacts/models artifacts/data/processed artifacts/logs
 

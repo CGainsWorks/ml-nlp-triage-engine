@@ -316,7 +316,18 @@ Everything was produced on CPython 3.9.0, Windows 11, **CPU only** (AMD Ryzen 7
 
 `experiments/results/` is committed, so the numbers are checkable without
 rerunning an hour of training. Nothing under `artifacts/` is committed, and no
-binary is stored in Git history or Releases.
+binary is stored in Git history or Releases. A containerised run writes its own
+copies to `artifacts/docker-results/` (gitignored) rather than over the
+committed ones; `make docker-results` diffs the two.
+
+**How exactly these reproduce.** Re-running in the Linux container reproduced
+`baseline-linear-v1` to four decimal places on every metric (0.9109 macro-F1,
+0.0291 ECE — scikit-learn's logistic regression is deterministic here).
+`baseline-gbdt-v1` did **not**: 0.7910 on Windows against 0.7951 in the
+container, because XGBoost's `hist` tree method with `n_jobs=-1` varies with
+platform and thread count. So "reproducible" means the scripts regenerate every
+figure from scratch, not that the last decimal is stable across machines. The
+transformer carries the usual additional float non-determinism on top of that.
 
 ```bash
 make test    # 189 tests, no trained models required
