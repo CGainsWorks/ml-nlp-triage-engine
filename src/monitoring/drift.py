@@ -164,12 +164,13 @@ class DriftMonitor:
                 for label in labels
             ]
             value = psi(mix_ref["proportions"], observed)
+            caveat = (
+                "compares predicted categories against the training label mix, "
+                "so model error and true drift are confounded here"
+            )
             readings.append(
                 DriftReading("predicted_category_mix", value, band(value), len(records),
-                             (note + " " if note else "")
-                             + "compares predicted categories against the training "
-                               "label mix, so model error and true drift are "
-                               "confounded here")
+                             "; ".join(filter(None, (note, caveat))))
             )
 
         conf_ref = self.confidence_references.get(version, {}).get("confidence")
