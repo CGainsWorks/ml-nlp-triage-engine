@@ -1,0 +1,33 @@
+# Build artefacts: datasets, trained models, run logs.
+# Everything reproducible from `make all` lives here and is never committed.
+artifacts/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.venv/
+venv/
+env/
+.python-version
+
+# Tooling
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+.ipynb_checkpoints/
+
+# Hugging Face / torch caches if pointed at the repo
+.cache/
+hf_cache/
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

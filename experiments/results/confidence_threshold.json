@@ -1,0 +1,529 @@
+{
+  "split": "val",
+  "n_rows": 1499,
+  "misroute_cost_in_reviews": 5.0,
+  "by_version": {
+    "baseline-gbdt-v1": {
+      "sweep": [
+        {
+          "threshold": 0.0,
+          "auto_route_rate": 1.0,
+          "held_for_review": 0,
+          "auto_routed_errors": 318,
+          "selective_accuracy": 0.7879,
+          "cost": 1.0607
+        },
+        {
+          "threshold": 0.05,
+          "auto_route_rate": 0.9993,
+          "held_for_review": 1,
+          "auto_routed_errors": 317,
+          "selective_accuracy": 0.7884,
+          "cost": 1.058
+        },
+        {
+          "threshold": 0.1,
+          "auto_route_rate": 0.99,
+          "held_for_review": 15,
+          "auto_routed_errors": 305,
+          "selective_accuracy": 0.7945,
+          "cost": 1.0274
+        },
+        {
+          "threshold": 0.15,
+          "auto_route_rate": 0.9746,
+          "held_for_review": 38,
+          "auto_routed_errors": 290,
+          "selective_accuracy": 0.8015,
+          "cost": 0.9927
+        },
+        {
+          "threshold": 0.2,
+          "auto_route_rate": 0.9586,
+          "held_for_review": 62,
+          "auto_routed_errors": 275,
+          "selective_accuracy": 0.8086,
+          "cost": 0.9586
+        },
+        {
+          "threshold": 0.25,
+          "auto_route_rate": 0.9426,
+          "held_for_review": 86,
+          "auto_routed_errors": 262,
+          "selective_accuracy": 0.8146,
+          "cost": 0.9313
+        },
+        {
+          "threshold": 0.3,
+          "auto_route_rate": 0.9166,
+          "held_for_review": 125,
+          "auto_routed_errors": 243,
+          "selective_accuracy": 0.8231,
+          "cost": 0.8939
+        },
+        {
+          "threshold": 0.35,
+          "auto_route_rate": 0.8933,
+          "held_for_review": 160,
+          "auto_routed_errors": 224,
+          "selective_accuracy": 0.8327,
+          "cost": 0.8539
+        },
+        {
+          "threshold": 0.4,
+          "auto_route_rate": 0.8599,
+          "held_for_review": 210,
+          "auto_routed_errors": 196,
+          "selective_accuracy": 0.8479,
+          "cost": 0.7939
+        },
+        {
+          "threshold": 0.45,
+          "auto_route_rate": 0.8319,
+          "held_for_review": 252,
+          "auto_routed_errors": 177,
+          "selective_accuracy": 0.8581,
+          "cost": 0.7585
+        },
+        {
+          "threshold": 0.5,
+          "auto_route_rate": 0.8032,
+          "held_for_review": 295,
+          "auto_routed_errors": 159,
+          "selective_accuracy": 0.8679,
+          "cost": 0.7272
+        },
+        {
+          "threshold": 0.55,
+          "auto_route_rate": 0.7825,
+          "held_for_review": 326,
+          "auto_routed_errors": 145,
+          "selective_accuracy": 0.8764,
+          "cost": 0.7011
+        },
+        {
+          "threshold": 0.6,
+          "auto_route_rate": 0.7518,
+          "held_for_review": 372,
+          "auto_routed_errors": 126,
+          "selective_accuracy": 0.8882,
+          "cost": 0.6684
+        },
+        {
+          "threshold": 0.65,
+          "auto_route_rate": 0.7218,
+          "held_for_review": 417,
+          "auto_routed_errors": 106,
+          "selective_accuracy": 0.902,
+          "cost": 0.6318
+        },
+        {
+          "threshold": 0.7,
+          "auto_route_rate": 0.6951,
+          "held_for_review": 457,
+          "auto_routed_errors": 90,
+          "selective_accuracy": 0.9136,
+          "cost": 0.6051
+        },
+        {
+          "threshold": 0.75,
+          "auto_route_rate": 0.6644,
+          "held_for_review": 503,
+          "auto_routed_errors": 77,
+          "selective_accuracy": 0.9227,
+          "cost": 0.5924
+        },
+        {
+          "threshold": 0.8,
+          "auto_route_rate": 0.6371,
+          "held_for_review": 544,
+          "auto_routed_errors": 65,
+          "selective_accuracy": 0.9319,
+          "cost": 0.5797
+        },
+        {
+          "threshold": 0.85,
+          "auto_route_rate": 0.6004,
+          "held_for_review": 599,
+          "auto_routed_errors": 53,
+          "selective_accuracy": 0.9411,
+          "cost": 0.5764
+        },
+        {
+          "threshold": 0.9,
+          "auto_route_rate": 0.5537,
+          "held_for_review": 669,
+          "auto_routed_errors": 38,
+          "selective_accuracy": 0.9542,
+          "cost": 0.573
+        },
+        {
+          "threshold": 0.95,
+          "auto_route_rate": 0.473,
+          "held_for_review": 790,
+          "auto_routed_errors": 19,
+          "selective_accuracy": 0.9732,
+          "cost": 0.5904
+        }
+      ],
+      "chosen": {
+        "threshold": 0.9,
+        "auto_route_rate": 0.5537,
+        "held_for_review": 669,
+        "auto_routed_errors": 38,
+        "selective_accuracy": 0.9542,
+        "cost": 0.573
+      }
+    },
+    "baseline-linear-v1": {
+      "sweep": [
+        {
+          "threshold": 0.0,
+          "auto_route_rate": 1.0,
+          "held_for_review": 0,
+          "auto_routed_errors": 158,
+          "selective_accuracy": 0.8946,
+          "cost": 0.527
+        },
+        {
+          "threshold": 0.05,
+          "auto_route_rate": 1.0,
+          "held_for_review": 0,
+          "auto_routed_errors": 158,
+          "selective_accuracy": 0.8946,
+          "cost": 0.527
+        },
+        {
+          "threshold": 0.1,
+          "auto_route_rate": 1.0,
+          "held_for_review": 0,
+          "auto_routed_errors": 158,
+          "selective_accuracy": 0.8946,
+          "cost": 0.527
+        },
+        {
+          "threshold": 0.15,
+          "auto_route_rate": 0.998,
+          "held_for_review": 3,
+          "auto_routed_errors": 155,
+          "selective_accuracy": 0.8964,
+          "cost": 0.519
+        },
+        {
+          "threshold": 0.2,
+          "auto_route_rate": 0.9933,
+          "held_for_review": 10,
+          "auto_routed_errors": 149,
+          "selective_accuracy": 0.8999,
+          "cost": 0.5037
+        },
+        {
+          "threshold": 0.25,
+          "auto_route_rate": 0.9847,
+          "held_for_review": 23,
+          "auto_routed_errors": 140,
+          "selective_accuracy": 0.9051,
+          "cost": 0.4823
+        },
+        {
+          "threshold": 0.3,
+          "auto_route_rate": 0.9726,
+          "held_for_review": 41,
+          "auto_routed_errors": 132,
+          "selective_accuracy": 0.9095,
+          "cost": 0.4676
+        },
+        {
+          "threshold": 0.35,
+          "auto_route_rate": 0.96,
+          "held_for_review": 60,
+          "auto_routed_errors": 121,
+          "selective_accuracy": 0.9159,
+          "cost": 0.4436
+        },
+        {
+          "threshold": 0.4,
+          "auto_route_rate": 0.9486,
+          "held_for_review": 77,
+          "auto_routed_errors": 113,
+          "selective_accuracy": 0.9205,
+          "cost": 0.4283
+        },
+        {
+          "threshold": 0.45,
+          "auto_route_rate": 0.9386,
+          "held_for_review": 92,
+          "auto_routed_errors": 103,
+          "selective_accuracy": 0.9268,
+          "cost": 0.4049
+        },
+        {
+          "threshold": 0.5,
+          "auto_route_rate": 0.9159,
+          "held_for_review": 126,
+          "auto_routed_errors": 90,
+          "selective_accuracy": 0.9345,
+          "cost": 0.3843
+        },
+        {
+          "threshold": 0.55,
+          "auto_route_rate": 0.8986,
+          "held_for_review": 152,
+          "auto_routed_errors": 76,
+          "selective_accuracy": 0.9436,
+          "cost": 0.3549
+        },
+        {
+          "threshold": 0.6,
+          "auto_route_rate": 0.8766,
+          "held_for_review": 185,
+          "auto_routed_errors": 62,
+          "selective_accuracy": 0.9528,
+          "cost": 0.3302
+        },
+        {
+          "threshold": 0.65,
+          "auto_route_rate": 0.8612,
+          "held_for_review": 208,
+          "auto_routed_errors": 54,
+          "selective_accuracy": 0.9582,
+          "cost": 0.3189
+        },
+        {
+          "threshold": 0.7,
+          "auto_route_rate": 0.8399,
+          "held_for_review": 240,
+          "auto_routed_errors": 46,
+          "selective_accuracy": 0.9635,
+          "cost": 0.3135
+        },
+        {
+          "threshold": 0.75,
+          "auto_route_rate": 0.8119,
+          "held_for_review": 282,
+          "auto_routed_errors": 35,
+          "selective_accuracy": 0.9712,
+          "cost": 0.3049
+        },
+        {
+          "threshold": 0.8,
+          "auto_route_rate": 0.7799,
+          "held_for_review": 330,
+          "auto_routed_errors": 27,
+          "selective_accuracy": 0.9769,
+          "cost": 0.3102
+        },
+        {
+          "threshold": 0.85,
+          "auto_route_rate": 0.7392,
+          "held_for_review": 391,
+          "auto_routed_errors": 20,
+          "selective_accuracy": 0.9819,
+          "cost": 0.3276
+        },
+        {
+          "threshold": 0.9,
+          "auto_route_rate": 0.6945,
+          "held_for_review": 458,
+          "auto_routed_errors": 16,
+          "selective_accuracy": 0.9846,
+          "cost": 0.3589
+        },
+        {
+          "threshold": 0.95,
+          "auto_route_rate": 0.6031,
+          "held_for_review": 595,
+          "auto_routed_errors": 11,
+          "selective_accuracy": 0.9878,
+          "cost": 0.4336
+        }
+      ],
+      "chosen": {
+        "threshold": 0.75,
+        "auto_route_rate": 0.8119,
+        "held_for_review": 282,
+        "auto_routed_errors": 35,
+        "selective_accuracy": 0.9712,
+        "cost": 0.3049
+      }
+    },
+    "transformer-distilbert-v1": {
+      "sweep": [
+        {
+          "threshold": 0.0,
+          "auto_route_rate": 1.0,
+          "held_for_review": 0,
+          "auto_routed_errors": 137,
+          "selective_accuracy": 0.9086,
+          "cost": 0.457
+        },
+        {
+          "threshold": 0.05,
+          "auto_route_rate": 1.0,
+          "held_for_review": 0,
+          "auto_routed_errors": 137,
+          "selective_accuracy": 0.9086,
+          "cost": 0.457
+        },
+        {
+          "threshold": 0.1,
+          "auto_route_rate": 1.0,
+          "held_for_review": 0,
+          "auto_routed_errors": 137,
+          "selective_accuracy": 0.9086,
+          "cost": 0.457
+        },
+        {
+          "threshold": 0.15,
+          "auto_route_rate": 1.0,
+          "held_for_review": 0,
+          "auto_routed_errors": 137,
+          "selective_accuracy": 0.9086,
+          "cost": 0.457
+        },
+        {
+          "threshold": 0.2,
+          "auto_route_rate": 0.9993,
+          "held_for_review": 1,
+          "auto_routed_errors": 137,
+          "selective_accuracy": 0.9085,
+          "cost": 0.4576
+        },
+        {
+          "threshold": 0.25,
+          "auto_route_rate": 0.9993,
+          "held_for_review": 1,
+          "auto_routed_errors": 137,
+          "selective_accuracy": 0.9085,
+          "cost": 0.4576
+        },
+        {
+          "threshold": 0.3,
+          "auto_route_rate": 0.9973,
+          "held_for_review": 4,
+          "auto_routed_errors": 134,
+          "selective_accuracy": 0.9104,
+          "cost": 0.4496
+        },
+        {
+          "threshold": 0.35,
+          "auto_route_rate": 0.9947,
+          "held_for_review": 8,
+          "auto_routed_errors": 131,
+          "selective_accuracy": 0.9121,
+          "cost": 0.4423
+        },
+        {
+          "threshold": 0.4,
+          "auto_route_rate": 0.992,
+          "held_for_review": 12,
+          "auto_routed_errors": 128,
+          "selective_accuracy": 0.9139,
+          "cost": 0.435
+        },
+        {
+          "threshold": 0.45,
+          "auto_route_rate": 0.9907,
+          "held_for_review": 14,
+          "auto_routed_errors": 127,
+          "selective_accuracy": 0.9145,
+          "cost": 0.433
+        },
+        {
+          "threshold": 0.5,
+          "auto_route_rate": 0.984,
+          "held_for_review": 24,
+          "auto_routed_errors": 120,
+          "selective_accuracy": 0.9186,
+          "cost": 0.4163
+        },
+        {
+          "threshold": 0.55,
+          "auto_route_rate": 0.9773,
+          "held_for_review": 34,
+          "auto_routed_errors": 116,
+          "selective_accuracy": 0.9208,
+          "cost": 0.4096
+        },
+        {
+          "threshold": 0.6,
+          "auto_route_rate": 0.9706,
+          "held_for_review": 44,
+          "auto_routed_errors": 112,
+          "selective_accuracy": 0.923,
+          "cost": 0.4029
+        },
+        {
+          "threshold": 0.65,
+          "auto_route_rate": 0.9613,
+          "held_for_review": 58,
+          "auto_routed_errors": 107,
+          "selective_accuracy": 0.9257,
+          "cost": 0.3956
+        },
+        {
+          "threshold": 0.7,
+          "auto_route_rate": 0.9533,
+          "held_for_review": 70,
+          "auto_routed_errors": 99,
+          "selective_accuracy": 0.9307,
+          "cost": 0.3769
+        },
+        {
+          "threshold": 0.75,
+          "auto_route_rate": 0.94,
+          "held_for_review": 90,
+          "auto_routed_errors": 89,
+          "selective_accuracy": 0.9368,
+          "cost": 0.3569
+        },
+        {
+          "threshold": 0.8,
+          "auto_route_rate": 0.9286,
+          "held_for_review": 107,
+          "auto_routed_errors": 79,
+          "selective_accuracy": 0.9432,
+          "cost": 0.3349
+        },
+        {
+          "threshold": 0.85,
+          "auto_route_rate": 0.9133,
+          "held_for_review": 130,
+          "auto_routed_errors": 68,
+          "selective_accuracy": 0.9503,
+          "cost": 0.3135
+        },
+        {
+          "threshold": 0.9,
+          "auto_route_rate": 0.8946,
+          "held_for_review": 158,
+          "auto_routed_errors": 58,
+          "selective_accuracy": 0.9567,
+          "cost": 0.2989
+        },
+        {
+          "threshold": 0.95,
+          "auto_route_rate": 0.8599,
+          "held_for_review": 210,
+          "auto_routed_errors": 42,
+          "selective_accuracy": 0.9674,
+          "cost": 0.2802
+        }
+      ],
+      "chosen": {
+        "threshold": 0.95,
+        "auto_route_rate": 0.8599,
+        "held_for_review": 210,
+        "auto_routed_errors": 42,
+        "selective_accuracy": 0.9674,
+        "cost": 0.2802
+      }
+    }
+  },
+  "chosen_per_version": {
+    "baseline-gbdt-v1": 0.9,
+    "baseline-linear-v1": 0.75,
+    "transformer-distilbert-v1": 0.95
+  },
+  "spread": 0.2
+}

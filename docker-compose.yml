@@ -1,0 +1,42 @@
+# docker compose up
+#
+# Runs the whole thing from nothing: downloads BANKING77, builds the splits,
+# trains both baselines and fine-tunes DistilBERT, regenerates every reported
+# number, then serves the API on http://localhost:8000.
+#
+# The first run trains from scratch on CPU and takes roughly an hour. Shorten
+# it with TRIAGE_EPOCHS=2 (the results then no longer match the README, and the
+# trainer says so in its log). Artefacts persist in the `artifacts` volume, so
+# subsequent runs start the API immediately.
+
+services:
+  trainer:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: ml-nlp-triage-engine:latest
+    command: ["bash", "scripts/train_all.sh"]
+    environment:
+      TRIAGE_EPOCHS: "${TRIAGE_EPOCHS:-8}"
+      TRIAGE_LR: "${TRIAGE_LR:-5e-5}"
+      TRIAGE_SKIP_IF_TRAINED: "${TRIAGE_SKIP_IF_TRAINED:-1}"
+    volumes:
+      - artifacts:/app/artifacts
+      - ./experiments/results:/app/experiments/results
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: ml-nlp-triage-engine:latest
+    depends_on:
+      trainer:
+        condition: service_completed_successfully
+    ports:
+      - "8000:8000"
+    volumes:
+      - artifacts:/app/artifacts
+    restart: unless-stopped
+
+volumes:
+  artifacts:

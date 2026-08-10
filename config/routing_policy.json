@@ -1,0 +1,13 @@
+{
+  "_generated_by": "python -m experiments.tune_confidence_threshold --write-config",
+  "_selected_on": "validation split, minimising 5*auto_routed_errors + held_for_review",
+  "confidence_threshold": 0.75,
+  "version_thresholds": {
+    "baseline-gbdt-v1": 0.9,
+    "baseline-linear-v1": 0.75,
+    "transformer-distilbert-v1": 0.95
+  },
+  "strong_negative_sentiment": -0.5,
+  "high_urgency": 0.5,
+  "max_escalation_steps": 2
+}

@@ -1,0 +1,122 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # transformers probes for TensorFlow on import; there is none installed here.
+  USE_TF: "0"
+  TOKENIZERS_PARALLELISM: "false"
+
+jobs:
+  test:
+    name: test (py${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.9 is the interpreter the reported numbers were produced on; the
+        # others are here to catch anything that only works on the old one.
+        python-version: ["3.9", "3.11", "3.12"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # CPU wheel: the default PyPI torch pulls the CUDA runtime and blows
+          # the runner's disk quota.
+          pip install --index-url https://download.pytorch.org/whl/cpu torch==2.2.2
+          pip install -r requirements-dev.txt
+          pip install ruff==0.8.4
+
+      - name: Lint
+        run: ruff check src tests experiments scripts
+
+      - name: Taxonomy is regenerated from its source of truth
+        run: python -m src.etl.render_taxonomy --check
+
+      - name: Tests
+        run: python -m pytest -q
+
+  smoke:
+    name: end-to-end smoke
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements-dev.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install --index-url https://download.pytorch.org/whl/cpu torch==2.2.2
+          pip install -r requirements-dev.txt
+
+      - name: Build the dataset
+        run: python -m src.etl.build_dataset
+
+      # Only the linear baseline. Gradient boosting takes a couple of minutes
+      # and the transformer takes an hour on CPU; neither belongs in CI. The
+      # point here is that the pipeline wires together, not that it is accurate.
+      - name: Train the linear baseline
+        run: python -m src.models.baseline.train --model linear
+
+      - name: Build drift references
+        run: python -m src.monitoring.build_reference
+
+      - name: Integration tests against the real artefacts
+        run: python -m pytest -q tests/test_models.py
+
+      # config/ab_config.json weights three versions but only one is trained
+      # here, so this also exercises the service's fallback path.
+      - name: Serve and drive the API
+        run: |
+          python -m uvicorn src.api.app:app --host 127.0.0.1 --port 8000 \
+            --log-level warning &
+          echo $! > uvicorn.pid
+          python scripts/demo_client.py --base-url http://127.0.0.1:8000 --wait 90
+          kill "$(cat uvicorn.pid)"
+
+      - name: Confidence threshold sweep still runs
+        run: python -m experiments.tune_confidence_threshold
+
+  docker:
+    name: docker image builds
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: false
+          load: true
+          tags: ml-nlp-triage-engine:ci
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: The image can import the service and read the taxonomy
+        run: |
+          docker run --rm ml-nlp-triage-engine:ci \
+            python -c "from src.api.app import app; from src.taxonomy import load_taxonomy; print(len(load_taxonomy().intents), 'intents')"

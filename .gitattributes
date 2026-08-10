@@ -1,0 +1,25 @@
+# Normalise line endings so CI on Linux and development on Windows agree.
+* text=auto eol=lf
+*.sh text eol=lf
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary
+*.gif binary
+
+# Git LFS rules for large binaries.
+#
+# NOTE: everything matched below is written under artifacts/, which is
+# .gitignore'd, so in normal use nothing in this repository is stored in LFS.
+# These rules exist so that if a model or media file is ever deliberately
+# committed (git add -f) it goes to LFS rather than into the Git history.
+*.bin filter=lfs diff=lfs merge=lfs -text
+*.safetensors filter=lfs diff=lfs merge=lfs -text
+*.pt filter=lfs diff=lfs merge=lfs -text
+*.pth filter=lfs diff=lfs merge=lfs -text
+*.onnx filter=lfs diff=lfs merge=lfs -text
+*.joblib filter=lfs diff=lfs merge=lfs -text
+*.pkl filter=lfs diff=lfs merge=lfs -text
+*.h5 filter=lfs diff=lfs merge=lfs -text
+*.bag filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text

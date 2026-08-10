@@ -1,0 +1,258 @@
+{
+  "split": "test",
+  "n_rows": 3079,
+  "overall_mean_compound": -0.0084,
+  "overall_label_mix": {
+    "negative": 0.1842,
+    "neutral": 0.6044,
+    "positive": 0.2114
+  },
+  "by_category": [
+    {
+      "category": "identity_security",
+      "n": 440,
+      "mean_compound": -0.0644,
+      "median_compound": 0.0,
+      "negative_share": 0.2295
+    },
+    {
+      "category": "cash_atm",
+      "n": 199,
+      "mean_compound": -0.0609,
+      "median_compound": 0.0,
+      "negative_share": 0.2462
+    },
+    {
+      "category": "payments_disputes",
+      "n": 360,
+      "mean_compound": -0.0423,
+      "median_compound": 0.0,
+      "negative_share": 0.2861
+    },
+    {
+      "category": "fees_fx",
+      "n": 440,
+      "mean_compound": -0.0385,
+      "median_compound": 0.0,
+      "negative_share": 0.275
+    },
+    {
+      "category": "cards_usage",
+      "n": 280,
+      "mean_compound": -0.0106,
+      "median_compound": 0.0,
+      "negative_share": 0.15
+    },
+    {
+      "category": "transfers",
+      "n": 400,
+      "mean_compound": -0.0097,
+      "median_compound": 0.0,
+      "negative_share": 0.2
+    },
+    {
+      "category": "cards_lifecycle",
+      "n": 360,
+      "mean_compound": 0.0338,
+      "median_compound": 0.0,
+      "negative_share": 0.025
+    },
+    {
+      "category": "top_up",
+      "n": 320,
+      "mean_compound": 0.0555,
+      "median_compound": 0.0,
+      "negative_share": 0.15
+    },
+    {
+      "category": "account_admin",
+      "n": 280,
+      "mean_compound": 0.0847,
+      "median_compound": 0.0,
+      "negative_share": 0.05
+    }
+  ],
+  "by_speech_act": [
+    {
+      "speech_act": "problem_report",
+      "n": 418,
+      "mean_compound": -0.1761,
+      "median_compound": -0.1365,
+      "negative_share": 0.4833
+    },
+    {
+      "speech_act": "complaint",
+      "n": 40,
+      "mean_compound": -0.1373,
+      "median_compound": -0.1764,
+      "negative_share": 0.475
+    },
+    {
+      "speech_act": "statement",
+      "n": 529,
+      "mean_compound": -0.0628,
+      "median_compound": 0.0,
+      "negative_share": 0.2533
+    },
+    {
+      "speech_act": "question",
+      "n": 1894,
+      "mean_compound": 0.0275,
+      "median_compound": 0.0,
+      "negative_share": 0.104
+    },
+    {
+      "speech_act": "request",
+      "n": 198,
+      "mean_compound": 0.174,
+      "median_compound": 0.1779,
+      "negative_share": 0.0758
+    }
+  ],
+  "most_negative_intents": [
+    {
+      "intent": "declined_transfer",
+      "n": 40,
+      "mean_compound": -0.2929,
+      "median_compound": -0.3818,
+      "negative_share": 0.75
+    },
+    {
+      "intent": "lost_or_stolen_card",
+      "n": 40,
+      "mean_compound": -0.2586,
+      "median_compound": -0.3182,
+      "negative_share": 0.675
+    },
+    {
+      "intent": "card_payment_wrong_exchange_rate",
+      "n": 40,
+      "mean_compound": -0.2427,
+      "median_compound": -0.2023,
+      "negative_share": 0.55
+    },
+    {
+      "intent": "pin_blocked",
+      "n": 40,
+      "mean_compound": -0.2091,
+      "median_compound": -0.0769,
+      "negative_share": 0.475
+    },
+    {
+      "intent": "declined_card_payment",
+      "n": 40,
+      "mean_compound": -0.1987,
+      "median_compound": -0.2509,
+      "negative_share": 0.55
+    },
+    {
+      "intent": "lost_or_stolen_phone",
+      "n": 40,
+      "mean_compound": -0.1955,
+      "median_compound": -0.212,
+      "negative_share": 0.5
+    },
+    {
+      "intent": "declined_cash_withdrawal",
+      "n": 40,
+      "mean_compound": -0.1819,
+      "median_compound": -0.2382,
+      "negative_share": 0.525
+    },
+    {
+      "intent": "wrong_exchange_rate_for_cash_withdrawal",
+      "n": 40,
+      "mean_compound": -0.1797,
+      "median_compound": 0.0,
+      "negative_share": 0.475
+    },
+    {
+      "intent": "top_up_failed",
+      "n": 40,
+      "mean_compound": -0.15,
+      "median_compound": -0.1521,
+      "negative_share": 0.45
+    },
+    {
+      "intent": "card_swallowed",
+      "n": 40,
+      "mean_compound": -0.1416,
+      "median_compound": 0.0,
+      "negative_share": 0.35
+    }
+  ],
+  "most_positive_intents": [
+    {
+      "intent": "supported_cards_and_currencies",
+      "n": 40,
+      "mean_compound": 0.2591,
+      "median_compound": 0.2957,
+      "negative_share": 0.0
+    },
+    {
+      "intent": "topping_up_by_card",
+      "n": 40,
+      "mean_compound": 0.1997,
+      "median_compound": 0.2023,
+      "negative_share": 0.15
+    },
+    {
+      "intent": "top_up_by_cash_or_cheque",
+      "n": 40,
+      "mean_compound": 0.1807,
+      "median_compound": 0.2023,
+      "negative_share": 0.0
+    },
+    {
+      "intent": "card_acceptance",
+      "n": 40,
+      "mean_compound": 0.1315,
+      "median_compound": 0.0,
+      "negative_share": 0.025
+    },
+    {
+      "intent": "atm_support",
+      "n": 39,
+      "mean_compound": 0.122,
+      "median_compound": 0.0,
+      "negative_share": 0.0
+    },
+    {
+      "intent": "transfer_into_account",
+      "n": 40,
+      "mean_compound": 0.1211,
+      "median_compound": 0.0,
+      "negative_share": 0.0
+    },
+    {
+      "intent": "fiat_currency_support",
+      "n": 40,
+      "mean_compound": 0.1092,
+      "median_compound": 0.0,
+      "negative_share": 0.0
+    },
+    {
+      "intent": "country_support",
+      "n": 40,
+      "mean_compound": 0.1055,
+      "median_compound": 0.0,
+      "negative_share": 0.0
+    },
+    {
+      "intent": "visa_or_mastercard",
+      "n": 40,
+      "mean_compound": 0.1053,
+      "median_compound": 0.0,
+      "negative_share": 0.0
+    },
+    {
+      "intent": "automatic_top_up",
+      "n": 40,
+      "mean_compound": 0.0944,
+      "median_compound": 0.0,
+      "negative_share": 0.0
+    }
+  ],
+  "caveat": "descriptive only; the dataset has no sentiment labels so no accuracy, precision or recall can be computed",
+  "priority_sentiment_correlation": 0.5232
+}

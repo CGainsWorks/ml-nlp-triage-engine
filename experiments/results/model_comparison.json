@@ -1,0 +1,128 @@
+{
+  "split": "test",
+  "n_rows": 3079,
+  "models": {
+    "baseline-gbdt-v1": {
+      "family": "baseline",
+      "algorithm": "TF-IDF (word 1-2) -> TruncatedSVD(256) -> XGBoost",
+      "train_seconds": 155.9,
+      "intent": {
+        "accuracy": 0.7918,
+        "macro_f1": 0.791,
+        "weighted_f1": 0.7911,
+        "balanced_accuracy": 0.7918
+      },
+      "category": {
+        "accuracy": 0.888,
+        "macro_f1": 0.8842,
+        "weighted_f1": 0.8879
+      },
+      "top_k_accuracy": {
+        "top_1": 0.7918,
+        "top_3": 0.9237,
+        "top_5": 0.9516
+      },
+      "expected_calibration_error": 0.0324,
+      "mean_confidence": 0.7936,
+      "accuracy_95ci": [
+        0.7778,
+        0.8058
+      ],
+      "latency": {
+        "single_record_p50_ms": 9.22,
+        "single_record_p95_ms": 10.968,
+        "batched_per_record_ms": 0.455,
+        "n_timed": 200,
+        "batch_size": 64
+      }
+    },
+    "baseline-linear-v1": {
+      "family": "baseline",
+      "algorithm": "TF-IDF (word 1-2 + char_wb 3-5) -> LogisticRegression",
+      "train_seconds": 109.7,
+      "intent": {
+        "accuracy": 0.9107,
+        "macro_f1": 0.9109,
+        "weighted_f1": 0.9109,
+        "balanced_accuracy": 0.9107
+      },
+      "category": {
+        "accuracy": 0.9604,
+        "macro_f1": 0.959,
+        "weighted_f1": 0.9604
+      },
+      "top_k_accuracy": {
+        "top_1": 0.9107,
+        "top_3": 0.9756,
+        "top_5": 0.988
+      },
+      "expected_calibration_error": 0.0291,
+      "mean_confidence": 0.8817,
+      "accuracy_95ci": [
+        0.9006,
+        0.9204
+      ],
+      "latency": {
+        "single_record_p50_ms": 7.079,
+        "single_record_p95_ms": 8.743,
+        "batched_per_record_ms": 0.21,
+        "n_timed": 200,
+        "batch_size": 64
+      }
+    },
+    "transformer-distilbert-v1": {
+      "family": "transformer",
+      "algorithm": "distilbert-base-uncased fine-tuned for sequence classification",
+      "train_seconds": 3901.0,
+      "intent": {
+        "accuracy": 0.9302,
+        "macro_f1": 0.9301,
+        "weighted_f1": 0.9301,
+        "balanced_accuracy": 0.9302
+      },
+      "category": {
+        "accuracy": 0.973,
+        "macro_f1": 0.9725,
+        "weighted_f1": 0.973
+      },
+      "top_k_accuracy": {
+        "top_1": 0.9302,
+        "top_3": 0.9821,
+        "top_5": 0.9896
+      },
+      "expected_calibration_error": 0.0297,
+      "mean_confidence": 0.9593,
+      "accuracy_95ci": [
+        0.9208,
+        0.9393
+      ],
+      "latency": {
+        "single_record_p50_ms": 19.052,
+        "single_record_p95_ms": 26.86,
+        "batched_per_record_ms": 18.068,
+        "n_timed": 200,
+        "batch_size": 64
+      }
+    }
+  },
+  "head_to_head": {
+    "baseline": "baseline-linear-v1",
+    "transformer": "transformer-distilbert-v1",
+    "intent_macro_f1_delta": 0.0192,
+    "category_macro_f1_delta": 0.0135,
+    "mcnemar": {
+      "b_only_a_correct": 68,
+      "c_only_b_correct": 128,
+      "n_discordant": 196,
+      "statistic": 17.7602,
+      "p_value": 2.5057e-05,
+      "significant_at_0.05": true
+    },
+    "per_class_intent": {
+      "transformer_wins": 50,
+      "baseline_wins": 16,
+      "ties": 11,
+      "baseline_wins_by_more_than_0.05": []
+    }
+  }
+}

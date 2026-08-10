@@ -1,0 +1,1023 @@
+{
+  "experiment_id": "triage-linear-vs-transformer-2026-08",
+  "split": "test",
+  "split_balance": {
+    "n_records": 3079,
+    "configured_weights": {
+      "baseline-linear-v1": 0.5,
+      "transformer-distilbert-v1": 0.5
+    },
+    "observed": {
+      "baseline-linear-v1": {
+        "count": 1563,
+        "share": 0.5076
+      },
+      "transformer-distilbert-v1": {
+        "count": 1516,
+        "share": 0.4924
+      }
+    },
+    "chi_square": {
+      "statistic": 0.7174,
+      "p_value": 0.396985,
+      "interpretation": "a high p-value means the realised split is consistent with the configured weights, which is what we want here"
+    }
+  },
+  "per_version": {
+    "baseline-linear-v1": {
+      "n": 1563,
+      "n_labelled": 1563,
+      "intent_accuracy": 0.9098,
+      "category_accuracy": 0.9623,
+      "intent_hits": 1422,
+      "mean_confidence": 0.886,
+      "auto_route_rate": 0.8618,
+      "human_review_rate": 0.1606,
+      "escalation_rate": 0.1478,
+      "latency_ms_p50": 0.494,
+      "latency_ms_p95": 0.713
+    },
+    "transformer-distilbert-v1": {
+      "n": 1516,
+      "n_labelled": 1516,
+      "intent_accuracy": 0.9288,
+      "category_accuracy": 0.973,
+      "intent_hits": 1408,
+      "mean_confidence": 0.9586,
+      "auto_route_rate": 0.8892,
+      "human_review_rate": 0.1299,
+      "escalation_rate": 0.1412,
+      "latency_ms_p50": 26.95,
+      "latency_ms_p95": 45.565
+    }
+  },
+  "comparisons": {
+    "intent_accuracy": {
+      "arm_a": "baseline-linear-v1",
+      "arm_b": "transformer-distilbert-v1",
+      "arm_a_rate": 0.9098,
+      "arm_b_rate": 0.9288,
+      "difference": 0.019,
+      "difference_95ci": [
+        -0.0002,
+        0.0382
+      ],
+      "z": -1.9303,
+      "p_value": 0.0535658,
+      "significant_at_0.05": false
+    }
+  },
+  "insights": {
+    "requested_window_seconds": null,
+    "versions_seen": [
+      "baseline-linear-v1",
+      "transformer-distilbert-v1"
+    ],
+    "overall": {
+      "n_records": 3079,
+      "window_seconds": 42.26,
+      "latency_ms": {
+        "mean": 14.0017,
+        "p50": 0.89,
+        "p95": 44.35,
+        "p99": 46.05
+      },
+      "confidence": {
+        "mean": 0.9218,
+        "p05": 0.4957,
+        "below_threshold_share": 0.1455
+      },
+      "auto_route_rate": 0.8753,
+      "escalation_rate": 0.1445,
+      "sentiment": {
+        "mean_compound": -0.0084,
+        "mix": {
+          "neutral": 0.6044,
+          "negative": 0.1842,
+          "positive": 0.2114
+        },
+        "caveat": "uncalibrated lexicon output, not a validated classifier"
+      },
+      "speech_act_mix": {
+        "question": 0.6151,
+        "statement": 0.1718,
+        "problem_report": 0.1358,
+        "request": 0.0643,
+        "complaint": 0.013
+      },
+      "top_intents": [
+        {
+          "intent": "declined_card_payment",
+          "count": 48,
+          "share": 0.0156
+        },
+        {
+          "intent": "lost_or_stolen_card",
+          "count": 47,
+          "share": 0.0153
+        },
+        {
+          "intent": "supported_cards_and_currencies",
+          "count": 47,
+          "share": 0.0153
+        },
+        {
+          "intent": "card_not_working",
+          "count": 46,
+          "share": 0.0149
+        },
+        {
+          "intent": "failed_transfer",
+          "count": 46,
+          "share": 0.0149
+        },
+        {
+          "intent": "exchange_via_app",
+          "count": 45,
+          "share": 0.0146
+        },
+        {
+          "intent": "declined_cash_withdrawal",
+          "count": 45,
+          "share": 0.0146
+        },
+        {
+          "intent": "getting_virtual_card",
+          "count": 45,
+          "share": 0.0146
+        },
+        {
+          "intent": "verify_my_identity",
+          "count": 45,
+          "share": 0.0146
+        },
+        {
+          "intent": "order_physical_card",
+          "count": 44,
+          "share": 0.0143
+        }
+      ],
+      "by_category": {
+        "identity_security": {
+          "count": 445,
+          "share": 0.1445,
+          "mean_confidence": 0.9311,
+          "mean_sentiment": -0.063,
+          "negative_share": 0.2292,
+          "human_review_share": 0.1438,
+          "mean_urgency": 0.0166
+        },
+        "fees_fx": {
+          "count": 431,
+          "share": 0.14,
+          "mean_confidence": 0.9305,
+          "mean_sentiment": -0.0442,
+          "negative_share": 0.2807,
+          "human_review_share": 0.1183,
+          "mean_urgency": 0.0046
+        },
+        "transfers": {
+          "count": 389,
+          "share": 0.1263,
+          "mean_confidence": 0.907,
+          "mean_sentiment": -0.01,
+          "negative_share": 0.1954,
+          "human_review_share": 0.1902,
+          "mean_urgency": 0.0643
+        },
+        "payments_disputes": {
+          "count": 374,
+          "share": 0.1215,
+          "mean_confidence": 0.8941,
+          "mean_sentiment": -0.0378,
+          "negative_share": 0.2834,
+          "human_review_share": 0.1845,
+          "mean_urgency": 0.031
+        },
+        "cards_lifecycle": {
+          "count": 364,
+          "share": 0.1182,
+          "mean_confidence": 0.9236,
+          "mean_sentiment": 0.0321,
+          "negative_share": 0.0275,
+          "human_review_share": 0.1346,
+          "mean_urgency": 0.0319
+        },
+        "top_up": {
+          "count": 314,
+          "share": 0.102,
+          "mean_confidence": 0.9182,
+          "mean_sentiment": 0.0581,
+          "negative_share": 0.1465,
+          "human_review_share": 0.1624,
+          "mean_urgency": 0.0255
+        },
+        "account_admin": {
+          "count": 287,
+          "share": 0.0932,
+          "mean_confidence": 0.9427,
+          "mean_sentiment": 0.0887,
+          "negative_share": 0.0488,
+          "human_review_share": 0.115,
+          "mean_urgency": 0.007
+        },
+        "cards_usage": {
+          "count": 279,
+          "share": 0.0906,
+          "mean_confidence": 0.9262,
+          "mean_sentiment": -0.0124,
+          "negative_share": 0.1505,
+          "human_review_share": 0.1362,
+          "mean_urgency": 0.0043
+        },
+        "cash_atm": {
+          "count": 196,
+          "share": 0.0637,
+          "mean_confidence": 0.9289,
+          "mean_sentiment": -0.0645,
+          "negative_share": 0.2551,
+          "human_review_share": 0.0969,
+          "mean_urgency": 0.0209
+        }
+      },
+      "by_queue": {
+        "PAYMENTS_OPS": {
+          "count": 578,
+          "share": 0.1877,
+          "mean_confidence": 0.9761,
+          "mean_sentiment": 0.0206,
+          "negative_share": 0.1869,
+          "human_review_share": 0.0,
+          "mean_urgency": 0.0457
+        },
+        "FRAUD_SECURITY": {
+          "count": 445,
+          "share": 0.1445,
+          "mean_confidence": 0.9311,
+          "mean_sentiment": -0.063,
+          "negative_share": 0.2292,
+          "human_review_share": 0.1438,
+          "mean_urgency": 0.0166
+        },
+        "CARD_SUPPORT": {
+          "count": 418,
+          "share": 0.1358,
+          "mean_confidence": 0.9762,
+          "mean_sentiment": -0.0234,
+          "negative_share": 0.1842,
+          "human_review_share": 0.0,
+          "mean_urgency": 0.0093
+        },
+        "MANUAL_TRIAGE": {
+          "count": 384,
+          "share": 0.1247,
+          "mean_confidence": 0.5925,
+          "mean_sentiment": -0.0106,
+          "negative_share": 0.1719,
+          "human_review_share": 1.0,
+          "mean_urgency": 0.0336
+        },
+        "BILLING": {
+          "count": 380,
+          "share": 0.1234,
+          "mean_confidence": 0.973,
+          "mean_sentiment": -0.0523,
+          "negative_share": 0.2868,
+          "human_review_share": 0.0,
+          "mean_urgency": 0.0047
+        },
+        "CARD_OPS": {
+          "count": 315,
+          "share": 0.1023,
+          "mean_confidence": 0.9772,
+          "mean_sentiment": 0.0433,
+          "negative_share": 0.0127,
+          "human_review_share": 0.0,
+          "mean_urgency": 0.0337
+        },
+        "DISPUTES": {
+          "count": 305,
+          "share": 0.0991,
+          "mean_confidence": 0.9719,
+          "mean_sentiment": -0.0347,
+          "negative_share": 0.2885,
+          "human_review_share": 0.0,
+          "mean_urgency": 0.0275
+        },
+        "GENERAL_SUPPORT": {
+          "count": 254,
+          "share": 0.0825,
+          "mean_confidence": 0.9845,
+          "mean_sentiment": 0.0828,
+          "negative_share": 0.0512,
+          "human_review_share": 0.0,
+          "mean_urgency": 0.0059
+        }
+      },
+      "by_priority": {
+        "3": {
+          "count": 1120,
+          "share": 0.3638,
+          "mean_confidence": 0.9257,
+          "mean_sentiment": 0.0216,
+          "negative_share": 0.1134,
+          "human_review_share": 0.133,
+          "mean_urgency": 0.0166
+        },
+        "2": {
+          "count": 738,
+          "share": 0.2397,
+          "mean_confidence": 0.9019,
+          "mean_sentiment": -0.0192,
+          "negative_share": 0.2276,
+          "human_review_share": 0.1843,
+          "mean_urgency": 0.0394
+        },
+        "4": {
+          "count": 693,
+          "share": 0.2251,
+          "mean_confidence": 0.9357,
+          "mean_sentiment": 0.0267,
+          "negative_share": 0.1631,
+          "human_review_share": 0.1183,
+          "mean_urgency": 0.0033
+        },
+        "1": {
+          "count": 528,
+          "share": 0.1715,
+          "mean_confidence": 0.9229,
+          "mean_sentiment": -0.1029,
+          "negative_share": 0.3011,
+          "human_review_share": 0.1534,
+          "mean_urgency": 0.0434
+        }
+      },
+      "accuracy": {
+        "n_labelled": 3079,
+        "intent_accuracy": 0.9191,
+        "note": "replayed labelled traffic only; live records carry no ground truth"
+      }
+    },
+    "by_version": {
+      "baseline-linear-v1": {
+        "n_records": 1563,
+        "window_seconds": 42.26,
+        "latency_ms": {
+          "mean": 0.5198,
+          "p50": 0.49,
+          "p95": 0.71,
+          "p99": 0.93
+        },
+        "confidence": {
+          "mean": 0.886,
+          "p05": 0.4324,
+          "below_threshold_share": 0.1606
+        },
+        "auto_route_rate": 0.8618,
+        "escalation_rate": 0.1478,
+        "sentiment": {
+          "mean_compound": -0.0176,
+          "mix": {
+            "neutral": 0.6059,
+            "negative": 0.1958,
+            "positive": 0.1983
+          },
+          "caveat": "uncalibrated lexicon output, not a validated classifier"
+        },
+        "speech_act_mix": {
+          "question": 0.6136,
+          "statement": 0.1683,
+          "problem_report": 0.1363,
+          "request": 0.0653,
+          "complaint": 0.0166
+        },
+        "top_intents": [
+          {
+            "intent": "exchange_rate",
+            "count": 30,
+            "share": 0.0192
+          },
+          {
+            "intent": "card_payment_not_recognised",
+            "count": 28,
+            "share": 0.0179
+          },
+          {
+            "intent": "country_support",
+            "count": 27,
+            "share": 0.0173
+          },
+          {
+            "intent": "supported_cards_and_currencies",
+            "count": 26,
+            "share": 0.0166
+          },
+          {
+            "intent": "compromised_card",
+            "count": 26,
+            "share": 0.0166
+          },
+          {
+            "intent": "cancel_transfer",
+            "count": 25,
+            "share": 0.016
+          },
+          {
+            "intent": "getting_virtual_card",
+            "count": 25,
+            "share": 0.016
+          },
+          {
+            "intent": "transaction_charged_twice",
+            "count": 25,
+            "share": 0.016
+          },
+          {
+            "intent": "getting_spare_card",
+            "count": 24,
+            "share": 0.0154
+          },
+          {
+            "intent": "declined_card_payment",
+            "count": 24,
+            "share": 0.0154
+          }
+        ],
+        "by_category": {
+          "identity_security": {
+            "count": 231,
+            "share": 0.1478,
+            "mean_confidence": 0.8962,
+            "mean_sentiment": -0.0652,
+            "negative_share": 0.2251,
+            "human_review_share": 0.1515,
+            "mean_urgency": 0.019
+          },
+          "fees_fx": {
+            "count": 221,
+            "share": 0.1414,
+            "mean_confidence": 0.896,
+            "mean_sentiment": -0.0511,
+            "negative_share": 0.3258,
+            "human_review_share": 0.1357,
+            "mean_urgency": 0.0054
+          },
+          "payments_disputes": {
+            "count": 199,
+            "share": 0.1273,
+            "mean_confidence": 0.8504,
+            "mean_sentiment": -0.0478,
+            "negative_share": 0.2814,
+            "human_review_share": 0.206,
+            "mean_urgency": 0.0322
+          },
+          "transfers": {
+            "count": 191,
+            "share": 0.1222,
+            "mean_confidence": 0.8644,
+            "mean_sentiment": -0.0334,
+            "negative_share": 0.2251,
+            "human_review_share": 0.2147,
+            "mean_urgency": 0.0571
+          },
+          "cards_lifecycle": {
+            "count": 187,
+            "share": 0.1196,
+            "mean_confidence": 0.8908,
+            "mean_sentiment": 0.0207,
+            "negative_share": 0.0428,
+            "human_review_share": 0.1497,
+            "mean_urgency": 0.0283
+          },
+          "account_admin": {
+            "count": 159,
+            "share": 0.1017,
+            "mean_confidence": 0.9261,
+            "mean_sentiment": 0.0871,
+            "negative_share": 0.044,
+            "human_review_share": 0.1069,
+            "mean_urgency": 0.0088
+          },
+          "top_up": {
+            "count": 148,
+            "share": 0.0947,
+            "mean_confidence": 0.8785,
+            "mean_sentiment": 0.0369,
+            "negative_share": 0.1757,
+            "human_review_share": 0.1757,
+            "mean_urgency": 0.0257
+          },
+          "cards_usage": {
+            "count": 128,
+            "share": 0.0819,
+            "mean_confidence": 0.8882,
+            "mean_sentiment": -0.0179,
+            "negative_share": 0.1484,
+            "human_review_share": 0.1641,
+            "mean_urgency": 0.0086
+          },
+          "cash_atm": {
+            "count": 99,
+            "share": 0.0633,
+            "mean_confidence": 0.888,
+            "mean_sentiment": -0.0629,
+            "negative_share": 0.2323,
+            "human_review_share": 0.1212,
+            "mean_urgency": 0.0242
+          }
+        },
+        "by_queue": {
+          "PAYMENTS_OPS": {
+            "count": 272,
+            "share": 0.174,
+            "mean_confidence": 0.9579,
+            "mean_sentiment": -0.0075,
+            "negative_share": 0.2279,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0426
+          },
+          "FRAUD_SECURITY": {
+            "count": 231,
+            "share": 0.1478,
+            "mean_confidence": 0.8962,
+            "mean_sentiment": -0.0652,
+            "negative_share": 0.2251,
+            "human_review_share": 0.1515,
+            "mean_urgency": 0.019
+          },
+          "MANUAL_TRIAGE": {
+            "count": 216,
+            "share": 0.1382,
+            "mean_confidence": 0.497,
+            "mean_sentiment": -0.0228,
+            "negative_share": 0.1944,
+            "human_review_share": 1.0,
+            "mean_urgency": 0.0338
+          },
+          "CARD_SUPPORT": {
+            "count": 194,
+            "share": 0.1241,
+            "mean_confidence": 0.9564,
+            "mean_sentiment": -0.0243,
+            "negative_share": 0.1701,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0113
+          },
+          "BILLING": {
+            "count": 191,
+            "share": 0.1222,
+            "mean_confidence": 0.9541,
+            "mean_sentiment": -0.0699,
+            "negative_share": 0.3455,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0063
+          },
+          "CARD_OPS": {
+            "count": 159,
+            "share": 0.1017,
+            "mean_confidence": 0.961,
+            "mean_sentiment": 0.0365,
+            "negative_share": 0.0126,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0308
+          },
+          "DISPUTES": {
+            "count": 158,
+            "share": 0.1011,
+            "mean_confidence": 0.9532,
+            "mean_sentiment": -0.0338,
+            "negative_share": 0.2722,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0278
+          },
+          "GENERAL_SUPPORT": {
+            "count": 142,
+            "share": 0.0909,
+            "mean_confidence": 0.9772,
+            "mean_sentiment": 0.0849,
+            "negative_share": 0.0423,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0063
+          }
+        },
+        "by_priority": {
+          "3": {
+            "count": 549,
+            "share": 0.3512,
+            "mean_confidence": 0.8905,
+            "mean_sentiment": 0.0132,
+            "negative_share": 0.1202,
+            "human_review_share": 0.1494,
+            "mean_urgency": 0.0188
+          },
+          "2": {
+            "count": 375,
+            "share": 0.2399,
+            "mean_confidence": 0.8547,
+            "mean_sentiment": -0.0329,
+            "negative_share": 0.24,
+            "human_review_share": 0.2133,
+            "mean_urgency": 0.0376
+          },
+          "4": {
+            "count": 365,
+            "share": 0.2335,
+            "mean_confidence": 0.9096,
+            "mean_sentiment": 0.0235,
+            "negative_share": 0.1836,
+            "human_review_share": 0.1233,
+            "mean_urgency": 0.0027
+          },
+          "1": {
+            "count": 274,
+            "share": 0.1753,
+            "mean_confidence": 0.8885,
+            "mean_sentiment": -0.1132,
+            "negative_share": 0.3029,
+            "human_review_share": 0.1606,
+            "mean_urgency": 0.042
+          }
+        },
+        "accuracy": {
+          "n_labelled": 1563,
+          "intent_accuracy": 0.9098,
+          "note": "replayed labelled traffic only; live records carry no ground truth"
+        }
+      },
+      "transformer-distilbert-v1": {
+        "n_records": 1516,
+        "window_seconds": 42.26,
+        "latency_ms": {
+          "mean": 27.9017,
+          "p50": 26.95,
+          "p95": 45.57,
+          "p99": 46.1
+        },
+        "confidence": {
+          "mean": 0.9586,
+          "p05": 0.6975,
+          "below_threshold_share": 0.1299
+        },
+        "auto_route_rate": 0.8892,
+        "escalation_rate": 0.1412,
+        "sentiment": {
+          "mean_compound": 0.0011,
+          "mix": {
+            "neutral": 0.6029,
+            "positive": 0.2249,
+            "negative": 0.1722
+          },
+          "caveat": "uncalibrated lexicon output, not a validated classifier"
+        },
+        "speech_act_mix": {
+          "question": 0.6168,
+          "statement": 0.1755,
+          "problem_report": 0.1352,
+          "request": 0.0633,
+          "complaint": 0.0092
+        },
+        "top_intents": [
+          {
+            "intent": "verify_my_identity",
+            "count": 28,
+            "share": 0.0185
+          },
+          {
+            "intent": "exchange_via_app",
+            "count": 27,
+            "share": 0.0178
+          },
+          {
+            "intent": "transfer_timing",
+            "count": 27,
+            "share": 0.0178
+          },
+          {
+            "intent": "lost_or_stolen_card",
+            "count": 26,
+            "share": 0.0172
+          },
+          {
+            "intent": "transfer_not_received_by_recipient",
+            "count": 26,
+            "share": 0.0172
+          },
+          {
+            "intent": "card_not_working",
+            "count": 25,
+            "share": 0.0165
+          },
+          {
+            "intent": "order_physical_card",
+            "count": 25,
+            "share": 0.0165
+          },
+          {
+            "intent": "declined_card_payment",
+            "count": 24,
+            "share": 0.0158
+          },
+          {
+            "intent": "pending_top_up",
+            "count": 24,
+            "share": 0.0158
+          },
+          {
+            "intent": "card_acceptance",
+            "count": 24,
+            "share": 0.0158
+          }
+        ],
+        "by_category": {
+          "identity_security": {
+            "count": 214,
+            "share": 0.1412,
+            "mean_confidence": 0.9689,
+            "mean_sentiment": -0.0607,
+            "negative_share": 0.2336,
+            "human_review_share": 0.1355,
+            "mean_urgency": 0.014
+          },
+          "fees_fx": {
+            "count": 210,
+            "share": 0.1385,
+            "mean_confidence": 0.9668,
+            "mean_sentiment": -0.0369,
+            "negative_share": 0.2333,
+            "human_review_share": 0.1,
+            "mean_urgency": 0.0038
+          },
+          "transfers": {
+            "count": 198,
+            "share": 0.1306,
+            "mean_confidence": 0.9481,
+            "mean_sentiment": 0.0126,
+            "negative_share": 0.1667,
+            "human_review_share": 0.1667,
+            "mean_urgency": 0.0712
+          },
+          "cards_lifecycle": {
+            "count": 177,
+            "share": 0.1168,
+            "mean_confidence": 0.9582,
+            "mean_sentiment": 0.0442,
+            "negative_share": 0.0113,
+            "human_review_share": 0.1186,
+            "mean_urgency": 0.0356
+          },
+          "payments_disputes": {
+            "count": 175,
+            "share": 0.1154,
+            "mean_confidence": 0.9438,
+            "mean_sentiment": -0.0266,
+            "negative_share": 0.2857,
+            "human_review_share": 0.16,
+            "mean_urgency": 0.0297
+          },
+          "top_up": {
+            "count": 166,
+            "share": 0.1095,
+            "mean_confidence": 0.9537,
+            "mean_sentiment": 0.077,
+            "negative_share": 0.1205,
+            "human_review_share": 0.1506,
+            "mean_urgency": 0.0253
+          },
+          "cards_usage": {
+            "count": 151,
+            "share": 0.0996,
+            "mean_confidence": 0.9583,
+            "mean_sentiment": -0.0077,
+            "negative_share": 0.1523,
+            "human_review_share": 0.1126,
+            "mean_urgency": 0.0007
+          },
+          "account_admin": {
+            "count": 128,
+            "share": 0.0844,
+            "mean_confidence": 0.9632,
+            "mean_sentiment": 0.0907,
+            "negative_share": 0.0547,
+            "human_review_share": 0.125,
+            "mean_urgency": 0.0047
+          },
+          "cash_atm": {
+            "count": 97,
+            "share": 0.064,
+            "mean_confidence": 0.9706,
+            "mean_sentiment": -0.066,
+            "negative_share": 0.2784,
+            "human_review_share": 0.0722,
+            "mean_urgency": 0.0175
+          }
+        },
+        "by_queue": {
+          "PAYMENTS_OPS": {
+            "count": 306,
+            "share": 0.2018,
+            "mean_confidence": 0.9924,
+            "mean_sentiment": 0.0456,
+            "negative_share": 0.1503,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0484
+          },
+          "CARD_SUPPORT": {
+            "count": 224,
+            "share": 0.1478,
+            "mean_confidence": 0.9933,
+            "mean_sentiment": -0.0227,
+            "negative_share": 0.1964,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0076
+          },
+          "FRAUD_SECURITY": {
+            "count": 214,
+            "share": 0.1412,
+            "mean_confidence": 0.9689,
+            "mean_sentiment": -0.0607,
+            "negative_share": 0.2336,
+            "human_review_share": 0.1355,
+            "mean_urgency": 0.014
+          },
+          "BILLING": {
+            "count": 189,
+            "share": 0.1247,
+            "mean_confidence": 0.992,
+            "mean_sentiment": -0.0346,
+            "negative_share": 0.2275,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0032
+          },
+          "MANUAL_TRIAGE": {
+            "count": 168,
+            "share": 0.1108,
+            "mean_confidence": 0.7153,
+            "mean_sentiment": 0.0051,
+            "negative_share": 0.1429,
+            "human_review_share": 1.0,
+            "mean_urgency": 0.0333
+          },
+          "CARD_OPS": {
+            "count": 156,
+            "share": 0.1029,
+            "mean_confidence": 0.9936,
+            "mean_sentiment": 0.0501,
+            "negative_share": 0.0128,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0365
+          },
+          "DISPUTES": {
+            "count": 147,
+            "share": 0.097,
+            "mean_confidence": 0.9921,
+            "mean_sentiment": -0.0357,
+            "negative_share": 0.3061,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0272
+          },
+          "GENERAL_SUPPORT": {
+            "count": 112,
+            "share": 0.0739,
+            "mean_confidence": 0.9938,
+            "mean_sentiment": 0.0802,
+            "negative_share": 0.0625,
+            "human_review_share": 0.0,
+            "mean_urgency": 0.0054
+          }
+        },
+        "by_priority": {
+          "3": {
+            "count": 571,
+            "share": 0.3766,
+            "mean_confidence": 0.9596,
+            "mean_sentiment": 0.0297,
+            "negative_share": 0.1068,
+            "human_review_share": 0.1173,
+            "mean_urgency": 0.0145
+          },
+          "2": {
+            "count": 363,
+            "share": 0.2394,
+            "mean_confidence": 0.9506,
+            "mean_sentiment": -0.005,
+            "negative_share": 0.2149,
+            "human_review_share": 0.1543,
+            "mean_urgency": 0.0413
+          },
+          "4": {
+            "count": 328,
+            "share": 0.2164,
+            "mean_confidence": 0.9648,
+            "mean_sentiment": 0.0302,
+            "negative_share": 0.1402,
+            "human_review_share": 0.1128,
+            "mean_urgency": 0.004
+          },
+          "1": {
+            "count": 254,
+            "share": 0.1675,
+            "mean_confidence": 0.9602,
+            "mean_sentiment": -0.0917,
+            "negative_share": 0.2992,
+            "human_review_share": 0.1457,
+            "mean_urgency": 0.0449
+          }
+        },
+        "accuracy": {
+          "n_labelled": 1516,
+          "intent_accuracy": 0.9288,
+          "note": "replayed labelled traffic only; live records carry no ground truth"
+        }
+      }
+    }
+  },
+  "drift": {
+    "thresholds": {
+      "stable_below": 0.1,
+      "significant_above": 0.25
+    },
+    "min_samples_for_signal": 200,
+    "has_input_reference": true,
+    "versions_with_confidence_reference": [
+      "baseline-gbdt-v1",
+      "baseline-linear-v1",
+      "transformer-distilbert-v1"
+    ],
+    "by_version": {
+      "transformer-distilbert-v1": [
+        {
+          "feature": "text_chars",
+          "psi": 0.0239,
+          "band": "stable",
+          "n_observed": 1516,
+          "note": ""
+        },
+        {
+          "feature": "text_words",
+          "psi": 0.0192,
+          "band": "stable",
+          "n_observed": 1516,
+          "note": ""
+        },
+        {
+          "feature": "predicted_category_mix",
+          "psi": 0.0337,
+          "band": "stable",
+          "n_observed": 1516,
+          "note": "compares predicted categories against the training label mix, so model error and true drift are confounded here"
+        },
+        {
+          "feature": "confidence",
+          "psi": 0.0126,
+          "band": "stable",
+          "n_observed": 1516,
+          "note": ""
+        }
+      ],
+      "baseline-linear-v1": [
+        {
+          "feature": "text_chars",
+          "psi": 0.0359,
+          "band": "stable",
+          "n_observed": 1563,
+          "note": ""
+        },
+        {
+          "feature": "text_words",
+          "psi": 0.029,
+          "band": "stable",
+          "n_observed": 1563,
+          "note": ""
+        },
+        {
+          "feature": "predicted_category_mix",
+          "psi": 0.0245,
+          "band": "stable",
+          "n_observed": 1563,
+          "note": "compares predicted categories against the training label mix, so model error and true drift are confounded here"
+        },
+        {
+          "feature": "confidence",
+          "psi": 0.0066,
+          "band": "stable",
+          "n_observed": 1563,
+          "note": ""
+        }
+      ]
+    },
+    "window_seconds": null,
+    "store": {
+      "capacity": 100000,
+      "held": 3079,
+      "total_seen": 3079,
+      "evicted": 0,
+      "durable": false,
+      "scope": "single process"
+    }
+  },
+  "caveats": [
+    "arms see disjoint records, so this is an unpaired comparison and is less powerful than the paired McNemar test in model_comparison.md",
+    "accuracy is only computable because this is a replay of a labelled split; live traffic carries no ground truth",
+    "there is no business outcome metric here (handle time, reopen rate, customer satisfaction), which is what a real A/B test would decide on"
+  ]
+}

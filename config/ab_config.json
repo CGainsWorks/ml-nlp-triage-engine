@@ -1,0 +1,13 @@
+{
+  "experiment_id": "triage-linear-vs-transformer-2026-08",
+  "description": "50/50 between the TF-IDF linear baseline (control) and the fine-tuned DistilBERT (treatment). The gradient-boosting baseline is registered and servable but carries no traffic: it lost to the linear model offline, so putting live traffic on it would only cost accuracy.",
+  "enabled": true,
+  "salt": "v1",
+  "unit_field": "client_id",
+  "control_version": "baseline-linear-v1",
+  "weights": {
+    "baseline-linear-v1": 0.5,
+    "transformer-distilbert-v1": 0.5,
+    "baseline-gbdt-v1": 0.0
+  }
+}

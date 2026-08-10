@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ml-nlp-triage-engine"
+version = "1.0.0"
+description = "Text triage: intent classification, sentiment and intent extraction, rule-based routing, and A/B assignment between model versions with per-version monitoring."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE" }
+authors = [{ name = "CGainsWorks" }]
+keywords = ["nlp", "triage", "intent-classification", "fastapi", "mlops"]
+
+[tool.setuptools]
+packages = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q --strict-markers"
+markers = [
+    "integration: needs trained artefacts under artifacts/models",
+]
+filterwarnings = [
+    # torch 2.2 still calls a deprecated pkg_resources API on import.
+    "ignore::DeprecationWarning:torch.*",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+# "UP" (pyupgrade) is deliberately absent. It rewrites `Optional[str]` to
+# `str | None`, and pydantic resolves annotations at runtime — on Python 3.9,
+# which this project supports and which produced the reported numbers, that
+# rewrite raises TypeError when the schema is built. typing generics stay.
+select = ["E", "F", "W", "I", "B", "C4"]
+# B008 flags `Depends(...)` in argument defaults, which is how FastAPI
+# dependency injection is spelled. There is no alternative spelling.
+ignore = ["E501", "B008"]

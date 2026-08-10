@@ -1,0 +1,16 @@
+.git/
+.github/
+artifacts/
+docs/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+.vscode/
+.idea/
+
+# NOTE: do not exclude *.md wholesale. data/TAXONOMY.md is a build artefact the
+# container's tests check for freshness, and data/DATASET_CARD.md carries the
+# dataset licence, which must travel with the image.

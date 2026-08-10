@@ -1,0 +1,26 @@
+# Runtime + training dependencies.
+# Pinned exactly; these are the versions every number in the README was
+# produced with. Python 3.9+ (developed and reported on CPython 3.9).
+
+# ETL
+numpy==1.26.4
+pandas==2.3.3
+
+# scikit-learn baselines
+scikit-learn==1.6.1
+scipy==1.13.1
+xgboost==2.1.4
+joblib==1.4.2
+
+# Transformer
+torch==2.2.2
+transformers==4.46.3
+
+# Extraction
+vaderSentiment==3.3.2
+
+# Service
+fastapi==0.115.6
+uvicorn[standard]==0.32.1
+pydantic==2.10.3
+prometheus-client==0.20.0
